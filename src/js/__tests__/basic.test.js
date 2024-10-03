@@ -1,34 +1,16 @@
-import lifeAlarm from '../lifeAlarm';
+// import sum from '../basic';
 
-test('Уровень жизни героя меньше 15', () => {
-  const hero1 = {
-    name: 'vasa',
-    health: '10',
-  };
+import { getHealth } from "../app";
 
-  const result = lifeAlarm(hero1);
-
-  expect(result).toBe('critical');
+test('should healthy', () => {
+  const result = getHealth({name: 'Маг', health: 90})
+  expect(result).toBe('healthy');
 });
-
-test('Уровень жизни героя больше 15 и меньше 50', () => {
-  const hero2 = {
-    name: 'вова',
-    health: '40',
-  };
-
-  const result = lifeAlarm(hero2);
-
+test('should wounded', () => {
+  const result = getHealth({name: 'Маг', health: 30})
   expect(result).toBe('wounded');
 });
-
-test('Уровень жизни героя больше 50', () => {
-  const hero3 = {
-    name: 'Валентин',
-    health: '100',
-  };
-
-  const result = lifeAlarm(hero3);
-
-  expect(result).toBe('healthy');
+test('should critical', () => {
+  const result = getHealth({name: 'Маг', health: 10})
+  expect(result).toBe('critical');
 });
